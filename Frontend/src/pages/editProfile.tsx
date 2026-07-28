@@ -95,20 +95,31 @@ export const EditProfile = () => {
             });
             setSuccess(true);
             setTimeout(() => setSuccess(false), 3000);
-        } catch (err) {
+        } catch (err: any) {
             console.error(err);
-            setError("Could not save changes.");
+            const apiMessage = err?.response?.data?.detail || "Could not save changes.";
+            setError(apiMessage);
         }
     };
 
     if (isLoading) return <div className="p-8 text-center font-bold">Loading profile...</div>;
 
+    const isDemoAccount = formData.username === 'demo';
+
     return (
         <div className="w-full max-w-3xl mx-auto p-8 relative">
             <button onClick={() => navigate('/')} className="absolute top-8 right-8 border-2 border-gray-200 dark:border-zinc-700 text-gray-400 dark:text-zinc-500 w-10 h-10 rounded-full flex items-center justify-center hover:bg-orange-50 dark:hover:bg-zinc-800 hover:text-orange-500 dark:hover:text-orange-400 hover:border-orange-300 transition-all font-bold shadow-sm">✕</button>
-            <h1 className="text-3xl font-extrabold mb-10 text-gray-800 dark:text-zinc-100">Edit Profile</h1>
-            {error && <p className="text-red-600 bg-red-100 p-3 mb-6 border border-red-300 font-bold">{error}</p>}
-            {success && <p className="text-green-700 bg-green-100 p-3 mb-6 border border-green-300 font-bold">Profile updated successfully.</p>}
+            <h1 className="text-3xl font-extrabold mb-4 text-gray-800 dark:text-zinc-100">Edit Profile</h1>
+            
+            {isDemoAccount && (
+                <div className="bg-orange-50 dark:bg-zinc-800/80 border border-orange-200 dark:border-zinc-700 rounded-xl p-4 mb-6 flex items-center gap-3 text-sm font-semibold text-orange-700 dark:text-orange-400 shadow-sm">
+                    <span className="text-lg">ℹ️</span>
+                    <span>The demo account profile is protected in public showcase mode to maintain a consistent review experience for all evaluators.</span>
+                </div>
+            )}
+
+            {error && <p className="text-red-600 bg-red-100 p-3 mb-6 border border-red-300 font-bold rounded-xl">{error}</p>}
+            {success && <p className="text-green-700 bg-green-100 p-3 mb-6 border border-green-300 font-bold rounded-xl">Profile updated successfully.</p>}
             <form onSubmit={handleSubmit} className="flex flex-col gap-10">
                 {/* Profile picture section */}
                 <div className="flex items-center gap-8">

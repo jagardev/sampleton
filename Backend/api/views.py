@@ -152,6 +152,15 @@ class MyProfileView(generics.RetrieveUpdateAPIView):
         profile, created = UserProfile.objects.get_or_create(user=self.request.user)
         return profile
 
+    def perform_update(self, serializer):
+        """
+        Protects the public demo account profile from permanent modification.
+        """
+        if self.request.user.username == 'demo':
+            from rest_framework.exceptions import PermissionDenied
+            raise PermissionDenied("The demo account profile is protected in public showcase mode.")
+        serializer.save()
+
 
 class CommentViewSet(viewsets.ModelViewSet):
     """
