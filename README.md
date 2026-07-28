@@ -1,6 +1,8 @@
-# Sampleton
+# Sampleton: Audio Library App
 
 > A full-stack audio sample-sharing platform built with Django, React, and PostgreSQL.
+
+Try the live demo: https://sampleton.vercel.app/
 
 Users can upload, browse, and stream audio samples, organize them into playlists, leave comments, and like their favorite tracks. The application features JWT authentication, dark mode, responsive design, and a persistent audio player.
 
