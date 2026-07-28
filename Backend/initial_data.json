@@ -1,0 +1,437 @@
+[
+{
+  "model": "api.userprofile",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "avatar_file": "avatars/Corporation_VM0UMdy.jpeg",
+    "display_name": "",
+    "bio": "",
+    "location": "",
+    "role": "User"
+  }
+},
+{
+  "model": "api.userprofile",
+  "pk": 4,
+  "fields": {
+    "user": 4,
+    "avatar_file": "",
+    "display_name": "Demo Account",
+    "bio": "Official demo account for testing Sampleton features.",
+    "location": "Global",
+    "role": "User"
+  }
+},
+{
+  "model": "api.track",
+  "pk": 1,
+  "fields": {
+    "title": "Corporation",
+    "artist": "Jairo",
+    "audio_file": "tracks/Corporation.mp3",
+    "cover_image": "covers/Corporation_SWIQKgL.jpeg",
+    "duration": 0,
+    "play_count": 0,
+    "is_public": false,
+    "upload_date": "2026-04-06T13:14:20.996Z",
+    "genre": "Electronic",
+    "user": 1
+  }
+},
+{
+  "model": "api.track",
+  "pk": 2,
+  "fields": {
+    "title": "Nostalgic",
+    "artist": "None",
+    "audio_file": "tracks/Nostalgic.mp3",
+    "cover_image": "covers/1.jpeg",
+    "duration": 0,
+    "play_count": 0,
+    "is_public": false,
+    "upload_date": "2026-04-24T09:11:54.968Z",
+    "genre": "Electronic",
+    "user": 1
+  }
+},
+{
+  "model": "api.track",
+  "pk": 3,
+  "fields": {
+    "title": "Village",
+    "artist": "Unknown Artist",
+    "audio_file": "tracks/Village.mp3",
+    "cover_image": "covers/2.jpg",
+    "duration": 0,
+    "play_count": 0,
+    "is_public": false,
+    "upload_date": "2026-04-24T09:22:20.058Z",
+    "genre": "Rock",
+    "user": 1
+  }
+},
+{
+  "model": "api.track",
+  "pk": 4,
+  "fields": {
+    "title": "Aura",
+    "artist": "Unknown Artist",
+    "audio_file": "tracks/Aura.mp3",
+    "cover_image": "covers/3.webp",
+    "duration": 0,
+    "play_count": 0,
+    "is_public": false,
+    "upload_date": "2026-04-24T09:25:51.603Z",
+    "genre": "Lo-Fi",
+    "user": 1
+  }
+},
+{
+  "model": "api.track",
+  "pk": 5,
+  "fields": {
+    "title": "Astro Ambient",
+    "artist": "admin",
+    "audio_file": "tracks/Astro_Ambient.mp3",
+    "cover_image": "covers/4.jpg",
+    "duration": 0,
+    "play_count": 0,
+    "is_public": false,
+    "upload_date": "2026-04-24T09:33:41.652Z",
+    "genre": "Other",
+    "user": 1
+  }
+},
+{
+  "model": "api.track",
+  "pk": 6,
+  "fields": {
+    "title": "Eglair",
+    "artist": "admin",
+    "audio_file": "tracks/alex-productions-cinematic-epic-emotional-eglair.mp3",
+    "cover_image": "covers/5.webp",
+    "duration": 0,
+    "play_count": 0,
+    "is_public": false,
+    "upload_date": "2026-04-24T09:45:01.408Z",
+    "genre": "Other",
+    "user": 1
+  }
+},
+{
+  "model": "api.track",
+  "pk": 7,
+  "fields": {
+    "title": "Motivate me",
+    "artist": "admin",
+    "audio_file": "tracks/mixaund-motivate-me.mp3",
+    "cover_image": "covers/6.jpg",
+    "duration": 0,
+    "play_count": 0,
+    "is_public": false,
+    "upload_date": "2026-04-24T09:45:19.132Z",
+    "genre": "Electronic",
+    "user": 1
+  }
+},
+{
+  "model": "api.track",
+  "pk": 8,
+  "fields": {
+    "title": "A day for smiles",
+    "artist": "admin",
+    "audio_file": "tracks/mixaund-a-day-for-smiles.mp3",
+    "cover_image": "covers/7.jpg",
+    "duration": 0,
+    "play_count": 0,
+    "is_public": false,
+    "upload_date": "2026-04-24T09:45:38.912Z",
+    "genre": "Lo-Fi",
+    "user": 1
+  }
+},
+{
+  "model": "api.track",
+  "pk": 9,
+  "fields": {
+    "title": "Happy Days",
+    "artist": "admin",
+    "audio_file": "tracks/fsm-team-happy-days.mp3",
+    "cover_image": "covers/8.jpg",
+    "duration": 0,
+    "play_count": 0,
+    "is_public": false,
+    "upload_date": "2026-04-24T09:45:58.505Z",
+    "genre": "Other",
+    "user": 1
+  }
+},
+{
+  "model": "api.track",
+  "pk": 10,
+  "fields": {
+    "title": "Do it yourself",
+    "artist": "admin",
+    "audio_file": "tracks/corporate-music-zone-do-it-yourself.mp3",
+    "cover_image": "covers/9.webp",
+    "duration": 0,
+    "play_count": 0,
+    "is_public": false,
+    "upload_date": "2026-04-24T09:46:23.022Z",
+    "genre": "Electronic",
+    "user": 1
+  }
+},
+{
+  "model": "api.track",
+  "pk": 11,
+  "fields": {
+    "title": "Think about you",
+    "artist": "admin",
+    "audio_file": "tracks/balynt-floating-instance-think-about-you.mp3",
+    "cover_image": "",
+    "duration": 0,
+    "play_count": 0,
+    "is_public": false,
+    "upload_date": "2026-04-24T09:46:44.555Z",
+    "genre": "Lo-Fi",
+    "user": 1
+  }
+},
+{
+  "model": "api.comment",
+  "pk": 1,
+  "fields": {
+    "track": 1,
+    "user": 1,
+    "content": "How can i dislike a theme?",
+    "posted_at": "2026-04-22T10:25:22.668Z"
+  }
+},
+{
+  "model": "api.comment",
+  "pk": 2,
+  "fields": {
+    "track": 1,
+    "user": 1,
+    "content": "Nice!",
+    "posted_at": "2026-04-22T10:25:24.873Z"
+  }
+},
+{
+  "model": "api.comment",
+  "pk": 3,
+  "fields": {
+    "track": 1,
+    "user": 1,
+    "content": "Testing",
+    "posted_at": "2026-04-22T10:26:56.773Z"
+  }
+},
+{
+  "model": "api.comment",
+  "pk": 4,
+  "fields": {
+    "track": 1,
+    "user": 1,
+    "content": "Vibing",
+    "posted_at": "2026-04-22T11:08:37.584Z"
+  }
+},
+{
+  "model": "api.comment",
+  "pk": 5,
+  "fields": {
+    "track": 3,
+    "user": 1,
+    "content": "Wow",
+    "posted_at": "2026-04-25T10:31:36.125Z"
+  }
+},
+{
+  "model": "api.comment",
+  "pk": 6,
+  "fields": {
+    "track": 4,
+    "user": 1,
+    "content": "Nice theme",
+    "posted_at": "2026-04-26T09:16:38.630Z"
+  }
+},
+{
+  "model": "api.comment",
+  "pk": 7,
+  "fields": {
+    "track": 3,
+    "user": 1,
+    "content": "This is a test",
+    "posted_at": "2026-04-26T12:22:25.742Z"
+  }
+},
+{
+  "model": "api.comment",
+  "pk": 8,
+  "fields": {
+    "track": 11,
+    "user": 1,
+    "content": "Hello",
+    "posted_at": "2026-05-21T18:22:59.909Z"
+  }
+},
+{
+  "model": "api.like",
+  "pk": 6,
+  "fields": {
+    "track": 1,
+    "user": 1,
+    "liked_at": "2026-04-24T09:17:31.152Z"
+  }
+},
+{
+  "model": "api.like",
+  "pk": 8,
+  "fields": {
+    "track": 8,
+    "user": 1,
+    "liked_at": "2026-04-24T09:57:27.943Z"
+  }
+},
+{
+  "model": "api.like",
+  "pk": 9,
+  "fields": {
+    "track": 4,
+    "user": 1,
+    "liked_at": "2026-04-24T10:30:18.656Z"
+  }
+},
+{
+  "model": "api.like",
+  "pk": 10,
+  "fields": {
+    "track": 5,
+    "user": 1,
+    "liked_at": "2026-04-26T10:53:16.150Z"
+  }
+},
+{
+  "model": "api.like",
+  "pk": 11,
+  "fields": {
+    "track": 3,
+    "user": 1,
+    "liked_at": "2026-04-26T12:22:14.554Z"
+  }
+},
+{
+  "model": "api.like",
+  "pk": 14,
+  "fields": {
+    "track": 11,
+    "user": 1,
+    "liked_at": "2026-05-21T18:23:11.681Z"
+  }
+},
+{
+  "model": "api.playlist",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "title": "Playlist 1",
+    "cover_image": "playlist_covers/2.jpg",
+    "is_public": true
+  }
+},
+{
+  "model": "api.playlist",
+  "pk": 9,
+  "fields": {
+    "user": 1,
+    "title": "playlist 2",
+    "cover_image": "",
+    "is_public": true
+  }
+},
+{
+  "model": "api.playlisttrack",
+  "pk": 1,
+  "fields": {
+    "track": 1,
+    "playlist": 1,
+    "order": 1
+  }
+},
+{
+  "model": "api.playlisttrack",
+  "pk": 2,
+  "fields": {
+    "track": 1,
+    "playlist": 1,
+    "order": 1
+  }
+},
+{
+  "model": "api.playlisttrack",
+  "pk": 3,
+  "fields": {
+    "track": 1,
+    "playlist": 1,
+    "order": 1
+  }
+},
+{
+  "model": "api.playlisttrack",
+  "pk": 4,
+  "fields": {
+    "track": 2,
+    "playlist": 1,
+    "order": 1
+  }
+},
+{
+  "model": "api.playlisttrack",
+  "pk": 6,
+  "fields": {
+    "track": 3,
+    "playlist": 9,
+    "order": 1
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$9bqPL93LvB1QOa1SgGrUig$8Hs4aaouubXSHIWqBz1Rk3J8KKBqLRkSXm7lIFpjUmY=",
+    "last_login": "2026-07-28T11:41:25.780Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-03-29T15:11:30.658Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$nUbVqDnw6WNz77wo4BvvF1$XCBzFF0XCdccvhaIrFtkmRjgzRsgunRc6wrbPoZL1oY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "demo",
+    "first_name": "",
+    "last_name": "",
+    "email": "demo@sampleton.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-07-28T11:35:21.383Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
