@@ -15,6 +15,7 @@ export const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [globalError, setGlobalError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     /** Stores per-field validation messages updated during input handling. */
     const [fieldErrors, setFieldErrors] = useState({
@@ -58,6 +59,8 @@ export const Login = () => {
 
         if (!usernameValid || !passwordValid) return; 
         
+        setIsLoading(true);
+
         try {
             // Requests JWT tokens from the Django authentication endpoint.
             const response = await api.post('token/', {
@@ -75,13 +78,30 @@ export const Login = () => {
         } catch (err) {
             // Displays a user-facing error when authentication fails.
             setGlobalError('Invalid username or password. Please try again.');
+            setIsLoading(false);
         }
     };
 
     /** Renders the login page with inline validation feedback. */
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 dark:bg-zinc-900 font-sans text-black dark:text-zinc-100 transition-colors duration-300">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 dark:bg-zinc-900 font-sans text-black dark:text-zinc-100 transition-colors duration-300 relative">
             
+            {/* Loading Overlay */}
+            {isLoading && (
+                <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex flex-col items-center justify-center p-4">
+                    <div className="bg-white dark:bg-zinc-800 p-8 rounded-2xl shadow-2xl flex flex-col items-center text-center max-w-sm border border-gray-100 dark:border-zinc-700">
+                        <svg className="animate-spin h-10 w-10 text-orange-500 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <p className="text-gray-800 dark:text-zinc-100 font-bold text-lg mb-2">Iniciando servidor...</p>
+                        <p className="text-gray-600 dark:text-zinc-400 text-sm">
+                            Por favor, espera a que Render inicialice el servidor, esto llevará alrededor de 30 segundos.
+                        </p>
+                    </div>
+                </div>
+            )}
+
             <div className="flex items-center gap-2 mb-10">
                 <img src="/logo_icon.png" alt="Sampleton" className="w-12 h-12 object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                 <span className="font-semibold text-3xl tracking-tighter">
