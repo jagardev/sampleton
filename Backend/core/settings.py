@@ -97,11 +97,14 @@ import dj_database_url
 
 database_url = os.getenv('DATABASE_URL')
 if database_url:
+    if 'sslmode=req' in database_url and 'sslmode=require' not in database_url:
+        database_url = database_url.replace('sslmode=req', 'sslmode=require')
     DATABASES = {
         'default': dj_database_url.config(
             default=database_url,
             conn_max_age=600,
             conn_health_checks=True,
+            ssl_require=True,
         )
     }
 else:
