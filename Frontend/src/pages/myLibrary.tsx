@@ -91,8 +91,9 @@ export const MyLibrary = () => {
             });
             setOpenMenuId(null);
             fetchData(); // Reload the list automatically after deletion.
-        } catch (error) { 
-            alert("Failed to delete. Please verify your permissions."); 
+        } catch (error: any) { 
+            const msg = error?.response?.data?.detail || "Failed to delete. Please verify your permissions.";
+            alert(msg); 
             console.error(error);
         }
     };

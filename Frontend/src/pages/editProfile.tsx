@@ -114,7 +114,7 @@ export const EditProfile = () => {
             {isDemoAccount && (
                 <div className="bg-orange-50 dark:bg-zinc-800/80 border border-orange-200 dark:border-zinc-700 rounded-xl p-4 mb-6 flex items-center gap-3 text-sm font-semibold text-orange-700 dark:text-orange-400 shadow-sm">
                     <span className="text-lg">ℹ️</span>
-                    <span>The demo account profile is protected in public showcase mode to maintain a consistent review experience for all evaluators.</span>
+                    <span>The demo account profile is protected in public showcase mode to maintain a consistent review experience for everyone.</span>
                 </div>
             )}
 

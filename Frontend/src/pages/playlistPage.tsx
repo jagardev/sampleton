@@ -55,7 +55,8 @@ export const PlaylistPage = () => {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
                 setPlaylist((prev: any) => ({ ...prev, cover_image: res.data.cover_image }));
-            } catch (err) {
+            } catch (err: any) {
+                alert(err?.response?.data?.detail || 'Error updating cover');
                 console.error('Error updating cover', err);
             }
         }
@@ -108,9 +109,9 @@ export const PlaylistPage = () => {
             });
             // Update the local playlist state to reflect the removal immediately.
             setPlaylist({ ...playlist, tracks: newTracks });
-        } catch (error) {
+        } catch (error: any) {
             console.error("Failed to remove track", error);
-            alert("Could not remove the track. Please verify your permissions.");
+            alert(error?.response?.data?.detail || "Could not remove the track. Please verify your permissions.");
         }
     };
 

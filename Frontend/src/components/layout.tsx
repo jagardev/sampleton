@@ -225,7 +225,7 @@ export const Layout = () => {
                 alert('Playlist created successfully!');
                 setIsPlaylistModalOpen(false);
             }
-        } catch (error) { alert("Failed to create playlist"); }
+        } catch (error: any) { alert(error?.response?.data?.detail || "Failed to create playlist"); }
     };
 
     const handleAddToPlaylist = async (playlistId: number) => {
@@ -238,8 +238,8 @@ export const Layout = () => {
             }, { headers: { Authorization: `Bearer ${token}` } });
             alert('Track added to playlist!');
             setIsPlaylistModalOpen(false);
-        } catch (error) {
-            alert("Failed to add track (it may already be in this playlist)");
+        } catch (error: any) {
+            alert(error?.response?.data?.detail || "Failed to add track (it may already be in this playlist)");
         }
     };
 
