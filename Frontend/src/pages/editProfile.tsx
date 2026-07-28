@@ -108,7 +108,7 @@ export const EditProfile = () => {
 
     return (
         <div className="w-full max-w-3xl mx-auto p-8 relative">
-            <button onClick={() => navigate('/')} className="absolute top-8 right-8 border-2 border-gray-200 dark:border-zinc-700 text-gray-400 dark:text-zinc-500 w-10 h-10 rounded-full flex items-center justify-center hover:bg-orange-50 dark:hover:bg-zinc-800 hover:text-orange-500 dark:hover:text-orange-400 hover:border-orange-300 transition-all font-bold shadow-sm">✕</button>
+            <button onClick={() => navigate('/dashboard')} className="absolute top-8 right-8 border-2 border-gray-200 dark:border-zinc-700 text-gray-400 dark:text-zinc-500 w-10 h-10 rounded-full flex items-center justify-center hover:bg-orange-50 dark:hover:bg-zinc-800 hover:text-orange-500 dark:hover:text-orange-400 hover:border-orange-300 transition-all font-bold shadow-sm">✕</button>
             <h1 className="text-3xl font-extrabold mb-4 text-gray-800 dark:text-zinc-100">Edit Profile</h1>
             
             {isDemoAccount && (

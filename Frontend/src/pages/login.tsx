@@ -70,7 +70,7 @@ export const Login = () => {
             localStorage.setItem('refresh', response.data.refresh);
             
             // Redirects to the home page after a successful login.
-            navigate('/'); 
+            navigate('/dashboard'); 
             
         } catch (err) {
             // Displays a user-facing error when authentication fails.
@@ -154,7 +154,7 @@ export const Login = () => {
             </div>
 
             <div className="mt-10 text-center text-sm">
-                <Link to="/" className="text-gray-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:underline transition-colors">
+                <Link to="/dashboard" className="text-gray-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:underline transition-colors">
                     Continue as Guest
                 </Link>
             </div>

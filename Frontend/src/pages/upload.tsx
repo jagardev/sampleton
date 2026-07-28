@@ -82,7 +82,7 @@ export const Upload = () => {
             });
             alert('Sample uploaded successfully!');
             if (refreshTracks) await refreshTracks();
-            navigate('/'); 
+            navigate('/dashboard'); 
         } catch (err: any) {
             const apiError = err?.response?.data?.detail;
             setError(apiError || 'Failed to upload the sample. Please check your connection.');

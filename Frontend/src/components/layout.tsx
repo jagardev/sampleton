@@ -247,7 +247,7 @@ export const Layout = () => {
         <div className="min-h-screen bg-zinc-100 dark:bg-zinc-900 font-sans text-black dark:text-zinc-100 pb-24 select-none transition-colors duration-300">
             
             <header className="flex flex-wrap md:flex-nowrap items-center justify-between p-4 gap-y-4 border-b border-gray-300 dark:border-zinc-800 sticky top-0 bg-zinc-50 dark:bg-zinc-900 z-10 shadow-sm transition-colors duration-300">
-                <div className="flex items-center gap-2 cursor-pointer group" onClick={() => navigate('/')}>
+                <div className="flex items-center gap-2 cursor-pointer group" onClick={() => navigate('/dashboard')}>
                     <img src="/logo_icon.png" alt="Sampleton" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                     <span className="font-semibold text-2xl tracking-tighter">
                         <span className="text-black dark:text-white">Sample</span><span className="text-orange-500">ton</span>
@@ -265,7 +265,7 @@ export const Layout = () => {
                     <button onClick={toggleDarkMode} className="w-8 h-8 md:w-9 md:h-9 md:mr-2 flex items-center justify-center rounded-full bg-zinc-700 dark:bg-zinc-800 border-2 border-transparent hover:border-gray-300 dark:hover:border-zinc-600 text-white dark:text-zinc-300 hover:text-orange-500 dark:hover:text-orange-500 transition-colors shadow-sm text-sm shrink-0">
                         {isDarkMode ? '☀️' : '🌙'}
                     </button>
-                    <button onClick={() => navigate('/')} className="text-gray-600 dark:text-zinc-300 hover:text-orange-500 dark:hover:text-orange-400 px-2 py-1.5 md:px-3 rounded-full hover:bg-orange-50 dark:hover:bg-zinc-800 transition-colors whitespace-nowrap">Discover</button>
+                    <button onClick={() => navigate('/dashboard')} className="text-gray-600 dark:text-zinc-300 hover:text-orange-500 dark:hover:text-orange-400 px-2 py-1.5 md:px-3 rounded-full hover:bg-orange-50 dark:hover:bg-zinc-800 transition-colors whitespace-nowrap">Discover</button>
                     {isAuthenticated && <button onClick={() => navigate('/library')} className="text-gray-600 dark:text-zinc-300 hover:text-orange-500 dark:hover:text-orange-400 px-2 py-1.5 md:px-3 rounded-full hover:bg-orange-50 dark:hover:bg-zinc-800 transition-colors whitespace-nowrap">My Library</button>}
                     <button onClick={() => isGuest ? navigate('/login') : navigate('/upload')} className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-3 md:px-5 py-1.5 rounded-full flex items-center gap-1 md:gap-2 hover:shadow-lg hover:scale-105 transition-all outline-none border-none whitespace-nowrap shrink-0">↑ Upload</button>
                     

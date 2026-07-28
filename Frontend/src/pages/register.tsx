@@ -194,7 +194,7 @@ export const Register = () => {
             </div>
 
             <div className="mt-10 text-center text-sm">
-                <Link to="/" className="text-gray-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:underline transition-colors">
+                <Link to="/dashboard" className="text-gray-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:underline transition-colors">
                     Continue as Guest
                 </Link>
             </div>

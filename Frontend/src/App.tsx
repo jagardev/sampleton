@@ -6,7 +6,7 @@
  * Public authentication routes are defined at the top level, while all
  * authenticated and shared pages are rendered inside the Layout route.
  */
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import Register from './pages/register';
 import Login from './pages/login';
@@ -39,7 +39,7 @@ export function App() {
         <Routes>
           
           <Route element={<Layout />}>
-             <Route path="/" element={<Home />} />
+             <Route path="/dashboard" element={<Home />} />
              <Route path="/upload" element={<Upload />} />
              <Route path="/profile" element={<EditProfile />} />
              <Route path="/library" element={<MyLibrary />} />
@@ -47,6 +47,7 @@ export function App() {
              <Route path="/sample/:id" element={<SampleDetails />} />
           </Route>
 
+          <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           
