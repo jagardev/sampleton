@@ -110,8 +110,8 @@ export const SampleDetails = () => {
             
             setComments([res.data, ...comments]);
             setNewComment('');
-        } catch (error) {
-            alert("Failed to post comment.");
+        } catch (error: any) {
+            alert(error?.response?.data?.detail || "Failed to post comment.");
             console.error(error);
         }
     };
@@ -137,8 +137,9 @@ export const SampleDetails = () => {
                     setLikes([...likes, res.data]);
                 }
             }
-        } catch (error) {
-            console.error('Error toggling like', error);
+        } catch (error: any) {
+            alert(error?.response?.data?.detail || "Failed to update like status.");
+            console.error(error);
         }
     };
 

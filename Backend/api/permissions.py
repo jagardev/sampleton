@@ -43,3 +43,29 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
             return True
 
         return obj.user == request.user
+
+
+DEMO_DENIED_MESSAGE = (
+    "This is a read-only demo account for portfolio showcase purposes. "
+    "Write operations are disabled to preserve a consistent experience for all visitors."
+)
+
+
+class BlockDemoWriteAccess(permissions.BasePermission):
+    """
+    Denies any write operation (POST, PUT, PATCH, DELETE) when the
+    authenticated user is the public demo account.
+
+    Read-only requests (GET, HEAD, OPTIONS) are always permitted.
+    This ensures that recruiters can fully explore the UI while the
+    underlying data remains untouched.
+    """
+
+    message = DEMO_DENIED_MESSAGE
+
+    def has_permission(self, request, view):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        if request.user and request.user.is_authenticated and request.user.username == 'demo':
+            return False
+        return True

@@ -176,10 +176,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Django REST Framework configuration. JWT is used as the sole authentication method.
+# BlockDemoWriteAccess is applied globally to prevent the public demo user from
+# modifying any data, preserving the portfolio showcase for all visitors.
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'api.permissions.BlockDemoWriteAccess',
+    ],
 }
 
 # JWT token lifetimes. Both the access and refresh tokens are valid for one hour.

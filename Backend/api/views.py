@@ -13,6 +13,7 @@ from rest_framework import viewsets, generics, permissions
 from .models import Track, UserProfile, Playlist, Comment, Like, PlaylistTrack
 from django.contrib.auth.models import User
 from .serializers import *
+from .permissions import BlockDemoWriteAccess
 
 
 class TrackViewSet(viewsets.ModelViewSet):
@@ -27,7 +28,7 @@ class TrackViewSet(viewsets.ModelViewSet):
     """
 
     serializer_class = TrackSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, BlockDemoWriteAccess]
 
     def get_queryset(self):
         """
@@ -73,14 +74,14 @@ class PlaylistViewSet(viewsets.ModelViewSet):
         Returns the permission classes applicable to the current action.
 
         Read actions (retrieve, list) are unrestricted. All other actions
-        require the user to be authenticated.
+        require the user to be authenticated and not be the demo user.
 
         Returns:
             list: A list of instantiated permission objects.
         """
         if self.action in ['retrieve', 'list']:
             return [permissions.AllowAny()]
-        return [permissions.IsAuthenticated()]
+        return [permissions.IsAuthenticated(), BlockDemoWriteAccess()]
 
     def get_queryset(self):
         """
@@ -140,7 +141,7 @@ class MyProfileView(generics.RetrieveUpdateAPIView):
     """
 
     serializer_class = UserProfileSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, BlockDemoWriteAccess]
 
     def get_object(self):
         """
@@ -172,7 +173,7 @@ class CommentViewSet(viewsets.ModelViewSet):
     """
 
     serializer_class = CommentSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, BlockDemoWriteAccess]
 
     def get_queryset(self):
         """
@@ -213,7 +214,7 @@ class LikeViewSet(viewsets.ModelViewSet):
     """
 
     serializer_class = LikeSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, BlockDemoWriteAccess]
 
     def get_queryset(self):
         """
@@ -253,6 +254,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, BlockDemoWriteAccess]
 
 
 class PlaylistTrackViewSet(viewsets.ModelViewSet):
@@ -265,6 +267,7 @@ class PlaylistTrackViewSet(viewsets.ModelViewSet):
 
     queryset = PlaylistTrack.objects.all()
     serializer_class = PlaylistTrackSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, BlockDemoWriteAccess]
 
 
 class RegisterView(generics.CreateAPIView):

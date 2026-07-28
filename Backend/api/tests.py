@@ -234,3 +234,40 @@ class TestLikes:
         response = auth_client.delete(f'/api/likes/{like.id}/')
         assert response.status_code == status.HTTP_204_NO_CONTENT
         assert Like.objects.count() == 0
+
+
+@pytest.mark.django_db
+class TestDemoProtection:
+    """
+    Tests ensuring that the demo user cannot perform write operations
+    on any resource, protecting the public portfolio showcase from vandalism.
+    """
+
+    @pytest.fixture
+    def demo_client(self):
+        demo_user = User.objects.create_user(username='demo', password='demopassword123', email='demo@test.com')
+        client = APIClient()
+        response = client.post('/api/token/', {'username': 'demo', 'password': 'demopassword123'}, format='json')
+        token = response.data['access']
+        client.credentials(HTTP_AUTHORIZATION=f'Bearer {token}')
+        return client
+
+    def test_demo_cannot_upload_track(self, demo_client):
+        audio_file = SimpleUploadedFile("demo_track.mp3", b'content', content_type="audio/mpeg")
+        data = {'title': 'Vandalism Track', 'artist': 'Bad Actor', 'audio_file': audio_file}
+        response = demo_client.post('/api/tracks/', data, format='multipart')
+        assert response.status_code == status.HTTP_403_FORBIDDEN
+
+    def test_demo_cannot_create_playlist(self, demo_client):
+        data = {'title': 'Vandalism Playlist', 'is_public': True}
+        response = demo_client.post('/api/playlists/', data, format='json')
+        assert response.status_code == status.HTTP_403_FORBIDDEN
+
+    def test_demo_cannot_update_profile(self, demo_client):
+        data = {'display_name': 'Vandalized Name'}
+        response = demo_client.patch('/api/profile/me/', data, format='json')
+        assert response.status_code == status.HTTP_403_FORBIDDEN
+
+    def test_demo_can_read_tracks(self, demo_client):
+        response = demo_client.get('/api/tracks/')
+        assert response.status_code == status.HTTP_200_OK
