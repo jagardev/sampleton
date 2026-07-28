@@ -25,15 +25,25 @@ export const Login = () => {
     const navigate = useNavigate();
 
     /**
+     * Fills the login form with demo user credentials for instant evaluation.
+     */
+    const handleDemoLogin = () => {
+        setUsername('demo');
+        setPassword('demopassword123');
+        setFieldErrors({ username: '', password: '' });
+        setGlobalError('');
+    };
+
+    /**
      * Performs basic field validation to ensure required inputs are not empty.
      */
-    const validarCampo = (campo: string, valor: string) => {
-        let mensaje = '';
-        if (valor.trim() === '') {
-            mensaje = 'Este campo es obligatorio.';
+    const validateField = (field: string, value: string) => {
+        let message = '';
+        if (value.trim() === '') {
+            message = 'This field is required.';
         }
-        setFieldErrors(prev => ({ ...prev, [campo]: mensaje }));
-        return mensaje === '';
+        setFieldErrors(prev => ({ ...prev, [field]: message }));
+        return message === '';
     };
 
     /**
@@ -43,10 +53,10 @@ export const Login = () => {
         e.preventDefault(); 
         setGlobalError('');
 
-        const usernameValido = validarCampo('username', username);
-        const passwordValido = validarCampo('password', password);
+        const usernameValid = validateField('username', username);
+        const passwordValid = validateField('password', password);
 
-        if (!usernameValido || !passwordValido) return; 
+        if (!usernameValid || !passwordValid) return; 
         
         try {
             // Requests JWT tokens from the Django authentication endpoint.
@@ -64,7 +74,7 @@ export const Login = () => {
             
         } catch (err) {
             // Displays a user-facing error when authentication fails.
-            setGlobalError('Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.');
+            setGlobalError('Invalid username or password. Please try again.');
         }
     };
 
@@ -97,7 +107,7 @@ export const Login = () => {
                                 setUsername(e.target.value);
                                 setFieldErrors(prev => ({ ...prev, username: '' }));
                             }}
-                            onBlur={(e) => validarCampo('username', e.target.value)}
+                            onBlur={(e) => validateField('username', e.target.value)}
                             className={`p-3 rounded-xl border text-sm focus:outline-none focus:ring-0 transition-colors duration-300 ${fieldErrors.username ? 'border-red-500 focus:ring-0' : 'border-gray-200 dark:border-zinc-600 focus:border-orange-500 dark:focus:border-orange-500 focus:ring-0'} bg-gray-50 dark:bg-zinc-900/50 dark:text-white`}
                         />
                         {fieldErrors.username && <span className="text-red-500 text-xs">{fieldErrors.username}</span>}
@@ -113,7 +123,7 @@ export const Login = () => {
                                 setPassword(e.target.value);
                                 setFieldErrors(prev => ({ ...prev, password: '' }));
                             }}
-                            onBlur={(e) => validarCampo('password', e.target.value)}
+                            onBlur={(e) => validateField('password', e.target.value)}
                             className={`p-3 rounded-xl border text-sm focus:outline-none focus:ring-0 transition-colors duration-300 ${fieldErrors.password ? 'border-red-500 focus:ring-0' : 'border-gray-200 dark:border-zinc-600 focus:border-orange-500 dark:focus:border-orange-500 focus:ring-0'} bg-gray-50 dark:bg-zinc-900/50 dark:text-white`}
                         />
                         {fieldErrors.password && <span className="text-red-500 text-xs">{fieldErrors.password}</span>}
@@ -121,9 +131,17 @@ export const Login = () => {
 
                     <button 
                         type="submit" 
-                        className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:scale-105 hover:shadow-lg text-white font-bold py-3 px-4 mt-4 transition-all shadow-md text-sm rounded-xl"
+                        className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:scale-105 hover:shadow-lg text-white font-bold py-3 px-4 mt-2 transition-all shadow-md text-sm rounded-xl"
                     >
                         Log In
+                    </button>
+
+                    <button 
+                        type="button" 
+                        onClick={handleDemoLogin}
+                        className="w-full bg-orange-50 dark:bg-zinc-700/60 hover:bg-orange-100 dark:hover:bg-zinc-700 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-zinc-600 font-bold py-2.5 px-4 rounded-xl text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm"
+                    >
+                        Demo Account
                     </button>
                 </form>
 

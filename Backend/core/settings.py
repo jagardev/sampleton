@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # The key is read from the environment; the fallback value is only acceptable in local development.
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-clave-por-defecto-para-dev')
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-default-dev-key-change-me')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # The DEBUG flag is also read from the environment and defaults to True for local development.
@@ -124,9 +124,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = 'es-es'
+LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Europe/Madrid'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -150,6 +150,10 @@ MEDIA_URL = '/media/'
 
 # The absolute filesystem path where uploaded files are stored on disk.
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Default primary key field type for all models without an explicit primary key.
+# https://docs.djangoproject.com/en/6.0/ref/settings/#default-auto-field
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Django REST Framework configuration. JWT is used as the sole authentication method.

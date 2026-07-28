@@ -61,7 +61,7 @@ export const MyLibrary = () => {
             setLikedTracks(tracksRes.data.filter((t: any) => likesRes.data.some((l: any) => l.track === t.id)));
             
         } catch (error) {  
-            console.error("Error al cargar la biblioteca:", error); 
+            console.error("Failed to load library:", error); 
         } finally { 
             setIsLoading(false); 
         }
@@ -81,7 +81,7 @@ export const MyLibrary = () => {
      * Reloads the library automatically once the deletion succeeds.
      */
     const handleDelete = async (id: number, type: 'track' | 'playlist') => {
-        if (!window.confirm(`¿Estás seguro de que quieres borrar este ${type}? Esta acción no se puede deshacer.`)) return;
+        if (!window.confirm(`Are you sure you want to delete this ${type}? This action cannot be undone.`)) return;
         
         const token = localStorage.getItem('access');
         try {
@@ -92,12 +92,12 @@ export const MyLibrary = () => {
             setOpenMenuId(null);
             fetchData(); // Reload the list automatically after deletion.
         } catch (error) { 
-            alert("Error al borrar. Asegúrate de que tienes permisos."); 
+            alert("Failed to delete. Please verify your permissions."); 
             console.error(error);
         }
     };
 
-    if (isLoading) return <div className="p-8 font-bold text-center">Cargando tu biblioteca...</div>;
+    if (isLoading) return <div className="p-8 font-bold text-center">Loading your library...</div>;
 
     return (
         <div className="w-full max-w-5xl mx-auto flex flex-col animate-fadeIn">
@@ -130,7 +130,7 @@ export const MyLibrary = () => {
                         </div>
 
                         {myTracks.length === 0 ? (
-                            <div className="py-8 text-center text-gray-500 dark:text-zinc-500 italic border-2 border-dashed border-gray-200 dark:border-zinc-700">No has subido ningún sample todavía.</div>
+                            <div className="py-8 text-center text-gray-500 dark:text-zinc-500 italic border-2 border-dashed border-gray-200 dark:border-zinc-700">You haven't uploaded any samples yet.</div>
                         ) : (
                             myTracks.map((track: any) => (
                                 <div key={`lib-track-${track.id}`} onClick={() => navigate(`/sample/${track.id}`)} className="flex items-center gap-4 p-3 border border-gray-200 dark:border-zinc-800 rounded-lg transition-all group relative cursor-pointer hover:bg-orange-50/50 dark:hover:bg-zinc-800/80 hover:border-orange-500 dark:hover:border-orange-500 hover:shadow-md">
@@ -159,7 +159,7 @@ export const MyLibrary = () => {
                                         
                                         {openMenuId === `t-${track.id}` && (
                                             <div className="absolute right-0 top-10 w-36 bg-white dark:bg-zinc-800 border border-black dark:border-zinc-700 shadow-lg z-50 overflow-hidden rounded-md">
-                                                <button onClick={(e) => { e.stopPropagation(); handleDelete(track.id, 'track'); }} className="w-full text-left px-4 py-3 text-sm text-red-600 font-bold hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">Borrar Sample</button>
+                                                <button onClick={(e) => { e.stopPropagation(); handleDelete(track.id, 'track'); }} className="w-full text-left px-4 py-3 text-sm text-red-600 font-bold hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">Delete Sample</button>
                                             </div>
                                         )}
                                     </div>
@@ -197,7 +197,7 @@ export const MyLibrary = () => {
                                     
                                     {openMenuId === `p-${pl.id}` && (
                                         <div className="absolute right-0 top-10 w-40 bg-white dark:bg-zinc-800 border border-black dark:border-zinc-700 shadow-lg z-50 overflow-hidden rounded-md">
-                                            <button onClick={(e) => { e.stopPropagation(); handleDelete(pl.id, 'playlist'); }} className="w-full text-left px-4 py-3 text-sm text-red-600 font-bold hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">Borrar Playlist</button>
+                                            <button onClick={(e) => { e.stopPropagation(); handleDelete(pl.id, 'playlist'); }} className="w-full text-left px-4 py-3 text-sm text-red-600 font-bold hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">Delete Playlist</button>
                                         </div>
                                     )}
                                 </div>
@@ -210,7 +210,7 @@ export const MyLibrary = () => {
                 {activeTab === 'Likes' && (
                     <div className="flex flex-col gap-3">
                         {likedTracks.length === 0 ? (
-                            <div className="py-8 text-center text-gray-500 dark:text-zinc-500 italic border-2 border-dashed border-gray-200 dark:border-zinc-700">Pronto podrás ver aquí tus canciones favoritas.</div>
+                            <div className="py-8 text-center text-gray-500 dark:text-zinc-500 italic border-2 border-dashed border-gray-200 dark:border-zinc-700">Your liked tracks will appear here.</div>
                         ) : (
                             likedTracks.map((track: any) => (
                                 <div key={`lib-like-${track.id}`} onClick={() => navigate(`/sample/${track.id}`)} className="flex items-center gap-4 p-3 border border-gray-200 dark:border-zinc-800 rounded-lg transition-all group relative cursor-pointer hover:bg-orange-50/50 dark:hover:bg-zinc-800/80 hover:border-orange-500 dark:hover:border-orange-500 hover:shadow-md">

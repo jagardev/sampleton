@@ -46,7 +46,7 @@ export const Upload = () => {
                 setError('');
             } else {
                 setAudioFile(null);
-                setError('Por favor, selecciona un audio válido (.mp3, .wav).');
+                setError('Please select a valid audio file (.mp3, .wav).');
             }
         }
     };
@@ -64,7 +64,7 @@ export const Upload = () => {
         e.preventDefault();
         setError('');
         if (!audioFile) {
-            setError('Debes subir el archivo de audio (Sample).');
+            setError('You must upload an audio file.');
             return;
         }
         setIsLoading(true);
@@ -80,11 +80,11 @@ export const Upload = () => {
             await api.post('tracks/', formData, {
                 headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'multipart/form-data'}
             });
-            alert('¡Canción subida con éxito!');
+            alert('Sample uploaded successfully!');
             if (refreshTracks) await refreshTracks();
             navigate('/'); 
         } catch (err) {
-            setError('Error al subir la canción. Revisa tu conexión.');
+            setError('Failed to upload the sample. Please check your connection.');
         } finally {
             setIsLoading(false);
         }
@@ -98,7 +98,7 @@ export const Upload = () => {
                 <div className="relative border-2 border-dashed border-orange-200 dark:border-zinc-700 py-16 px-4 flex flex-col items-center justify-center bg-white dark:bg-zinc-800/50 hover:bg-orange-50/50 dark:hover:bg-zinc-800 transition-colors rounded-2xl cursor-pointer group">
                     {audioFile ? (
                         <div className="text-xl font-bold text-orange-500 flex flex-col items-center gap-2">
-                            <span>✅ Archivo seleccionado:</span>
+                            <span>✅ File selected:</span>
                             <span className="text-black dark:text-zinc-200">{audioFile.name}</span>
                         </div>
                     ) : (

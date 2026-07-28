@@ -76,7 +76,7 @@ export const Layout = () => {
             const tracksResponse = await api.get('tracks/');
             setTracks(tracksResponse.data);
         } catch (error) {
-            console.error("Error al recargar tracks", error);
+            console.error("Failed to reload tracks", error);
         }
     };
 
@@ -89,7 +89,7 @@ export const Layout = () => {
                 const tracksResponse = await api.get('tracks/');
                 setTracks(tracksResponse.data);
             } catch (error) {
-                console.error("Error al cargar datos", error);
+                console.error("Failed to load data", error);
             }
 
             if (!token) {
@@ -197,7 +197,7 @@ export const Layout = () => {
     /** Handles playlist modal actions, including load, create, and attach flows. */
     const openPlaylistModal = async (track: any = null) => {
         if (isGuest) {
-            alert("Debes iniciar sesión para usar las playlists.");
+            alert("You must log in to use playlists.");
             navigate('/login');
             return;
         }
@@ -222,10 +222,10 @@ export const Layout = () => {
             setNewPlaylistTitle('');
             window.dispatchEvent(new Event('playlistRefresh'));
             if (!trackToAdd) {
-                alert('¡Playlist creada con éxito!');
+                alert('Playlist created successfully!');
                 setIsPlaylistModalOpen(false);
             }
-        } catch (error) { alert("Error al crear la playlist"); }
+        } catch (error) { alert("Failed to create playlist"); }
     };
 
     const handleAddToPlaylist = async (playlistId: number) => {
@@ -236,10 +236,10 @@ export const Layout = () => {
                 track: trackToAdd.id,
                 order: 1
             }, { headers: { Authorization: `Bearer ${token}` } });
-            alert('¡Canción añadida a la playlist!');
+            alert('Track added to playlist!');
             setIsPlaylistModalOpen(false);
         } catch (error) {
-            alert("Error al añadir (Quizás ya está en la lista)");
+            alert("Failed to add track (it may already be in this playlist)");
         }
     };
 
@@ -400,7 +400,7 @@ export const Layout = () => {
                             <div className="flex flex-col gap-2 max-h-60 overflow-y-auto border-t border-gray-200 pt-4">
                                 <p className="text-xs font-bold text-gray-500 uppercase mb-2">Your Playlists</p>
                                 {myPlaylists.length === 0 ? (
-                                    <p className="text-sm italic text-gray-500">No tienes playlists. Crea una arriba.</p>
+                                    <p className="text-sm italic text-gray-500">You have no playlists. Create one above.</p>
                                 ) : (
                                     myPlaylists.map(pl => (
                                         <button 

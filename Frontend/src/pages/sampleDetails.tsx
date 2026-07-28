@@ -79,7 +79,7 @@ export const SampleDetails = () => {
                     }
                 }
             } catch (error) {
-                console.error("Error cargando el sample", error);
+                console.error("Failed to load sample", error);
             } finally {
                 setIsLoading(false);
             }
@@ -94,7 +94,7 @@ export const SampleDetails = () => {
 
         const token = localStorage.getItem('access');
         if (!token) {
-            alert("Debes iniciar sesión para comentar.");
+            alert("You must log in to comment.");
             navigate('/login');
             return;
         }
@@ -111,7 +111,7 @@ export const SampleDetails = () => {
             setComments([res.data, ...comments]);
             setNewComment('');
         } catch (error) {
-            alert("Error al publicar el comentario.");
+            alert("Failed to post comment.");
             console.error(error);
         }
     };
@@ -120,7 +120,7 @@ export const SampleDetails = () => {
     const handleLike = async () => {
         const token = localStorage.getItem('access');
         if (!token) {
-            alert('Debes iniciar sesión para dar like.');
+            alert('You must log in to like tracks.');
             navigate('/login');
             return;
         }
@@ -142,8 +142,8 @@ export const SampleDetails = () => {
         }
     };
 
-    if (isLoading) return <div className="p-8 font-bold text-center">Cargando sample...</div>;
-    if (!track) return <div className="p-8 font-bold text-red-500 text-center">Sample no encontrado.</div>;
+    if (isLoading) return <div className="p-8 font-bold text-center">Loading sample...</div>;
+    if (!track) return <div className="p-8 font-bold text-red-500 text-center">Sample not found.</div>;
 
     // Generate random bar heights to simulate a static waveform visualisation.
     const waveformBars = Array.from({ length: 60 }).map(() => Math.floor(Math.random() * 80) + 20);
@@ -240,10 +240,10 @@ export const SampleDetails = () => {
                                     <div className="absolute left-0 mt-2 w-48 bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-700 rounded-xl shadow-xl z-50 flex flex-col overflow-hidden">
                                         <button onClick={() => {
                                             navigator.clipboard.writeText(window.location.href);
-                                            alert('Enlace copiado al portapapeles!');
+                                            alert('Link copied to clipboard!');
                                             setIsShareOpen(false);
                                         }} className="px-4 py-3 text-left text-sm font-bold text-gray-700 dark:text-zinc-200 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-zinc-800 transition-colors">
-                                            Copiar Enlace
+                                            Copy Link
                                         </button>
                                     </div>
                                 )}

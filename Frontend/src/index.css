@@ -8,7 +8,7 @@
     color: #ea580c; /* orange-600 */
   }
 
-  /* Scrollbar personalizado y elegante */
+  /* Custom scrollbar styling */
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;

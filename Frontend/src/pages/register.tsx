@@ -36,27 +36,27 @@ export const Register = () => {
      * Validates a single field and updates only that field's error state.
      * This function is primarily triggered on blur events.
      */
-    const validarCampo = (campo: string, valor: string) => {
-        let mensaje = '';
+    const validateField = (field: string, value: string) => {
+        let message = '';
         
-        switch (campo) {
+        switch (field) {
             case 'username':
-                if (valor.trim() === '') mensaje = 'El nombre de usuario es obligatorio.';
+                if (value.trim() === '') message = 'Username is required.';
                 break;
             case 'email':
-                if (!emailRegex.test(valor)) mensaje = 'Introduce un correo válido (ej: usuario@dominio.com).';
+                if (!emailRegex.test(value)) message = 'Please enter a valid email (e.g. user@domain.com).';
                 break;
             case 'password':
-                if (!passwordRegex.test(valor)) mensaje = 'Mínimo 8 caracteres, mayúscula, minúscula, número y símbolo.';
+                if (!passwordRegex.test(value)) message = 'Minimum 8 characters with uppercase, lowercase, number, and symbol.';
                 break;
             case 'confirmPassword':
-                if (valor !== password) mensaje = 'Las contraseñas no coinciden.';
+                if (value !== password) message = 'Passwords do not match.';
                 break;
         }
 
         // Update only the error message associated with the current field.
-        setFieldErrors(prev => ({ ...prev, [campo]: mensaje }));
-        return mensaje === ''; // Returns true when the field is valid.
+        setFieldErrors(prev => ({ ...prev, [field]: message }));
+        return message === ''; // Returns true when the field is valid.
     };
 
     /**
@@ -67,13 +67,13 @@ export const Register = () => {
         setGlobalError('');
 
         // Validate every field before attempting to submit.
-        const usernameValido = validarCampo('username', username);
-        const emailValido = validarCampo('email', email);
-        const passwordValido = validarCampo('password', password);
-        const confirmValido = validarCampo('confirmPassword', confirmPassword);
+        const usernameValid = validateField('username', username);
+        const emailValid = validateField('email', email);
+        const passwordValid = validateField('password', password);
+        const confirmValid = validateField('confirmPassword', confirmPassword);
 
         // Abort submission if any validation check fails.
-        if (!usernameValido || !emailValido || !passwordValido || !confirmValido) {
+        if (!usernameValid || !emailValid || !passwordValid || !confirmValid) {
             return; 
         }
         
@@ -84,11 +84,11 @@ export const Register = () => {
                 password: password
             });
             
-            alert("¡Cuenta creada con éxito!");
+            alert("Account created successfully!");
             navigate('/login'); 
             
         } catch (err) {
-            setGlobalError('Error al registrar. Puede que el usuario o email ya existan.');
+            setGlobalError('Registration failed. The username or email may already be in use.');
         }
     };
 
@@ -122,7 +122,7 @@ export const Register = () => {
                                 setUsername(e.target.value);
                                 setFieldErrors(prev => ({ ...prev, username: '' })); // Clears the error while typing.
                             }}
-                            onBlur={(e) => validarCampo('username', e.target.value)} // Validates the field on blur.
+                            onBlur={(e) => validateField('username', e.target.value)} // Validates the field on blur.
                             className={`p-3 rounded-xl border text-sm focus:outline-none focus:ring-0 transition-colors duration-300 ${fieldErrors.username ? 'border-red-500 focus:ring-0' : 'border-gray-200 dark:border-zinc-600 focus:border-orange-500 dark:focus:border-orange-500 focus:ring-0'} bg-gray-50 dark:bg-zinc-900/50 dark:text-white`}
                         />
                         {/* Displays the validation message for this field. */}
@@ -139,7 +139,7 @@ export const Register = () => {
                                 setEmail(e.target.value);
                                 setFieldErrors(prev => ({ ...prev, email: '' }));
                             }}
-                            onBlur={(e) => validarCampo('email', e.target.value)}
+                            onBlur={(e) => validateField('email', e.target.value)}
                             className={`p-3 rounded-xl border text-sm focus:outline-none focus:ring-0 transition-colors duration-300 ${fieldErrors.email ? 'border-red-500 focus:ring-0' : 'border-gray-200 dark:border-zinc-600 focus:border-orange-500 dark:focus:border-orange-500 focus:ring-0'} bg-gray-50 dark:bg-zinc-900/50 dark:text-white`}
                         />
                         {fieldErrors.email && <span className="text-red-500 text-xs">{fieldErrors.email}</span>}
@@ -155,7 +155,7 @@ export const Register = () => {
                                 setPassword(e.target.value);
                                 setFieldErrors(prev => ({ ...prev, password: '' }));
                             }}
-                            onBlur={(e) => validarCampo('password', e.target.value)}
+                            onBlur={(e) => validateField('password', e.target.value)}
                             className={`p-3 rounded-xl border text-sm focus:outline-none focus:ring-0 transition-colors duration-300 ${fieldErrors.password ? 'border-red-500 focus:ring-0' : 'border-gray-200 dark:border-zinc-600 focus:border-orange-500 dark:focus:border-orange-500 focus:ring-0'} bg-gray-50 dark:bg-zinc-900/50 dark:text-white`}
                         />
                         {fieldErrors.password && <span className="text-red-500 text-xs">{fieldErrors.password}</span>}
@@ -171,7 +171,7 @@ export const Register = () => {
                                 setConfirmPassword(e.target.value);
                                 setFieldErrors(prev => ({ ...prev, confirmPassword: '' }));
                             }}
-                            onBlur={(e) => validarCampo('confirmPassword', e.target.value)}
+                            onBlur={(e) => validateField('confirmPassword', e.target.value)}
                             className={`p-3 rounded-xl border text-sm focus:outline-none focus:ring-0 transition-colors duration-300 ${fieldErrors.confirmPassword ? 'border-red-500 focus:ring-0' : 'border-gray-200 dark:border-zinc-600 focus:border-orange-500 dark:focus:border-orange-500 focus:ring-0'} bg-gray-50 dark:bg-zinc-900/50 dark:text-white`}
                         />
                         {fieldErrors.confirmPassword && <span className="text-red-500 text-xs">{fieldErrors.confirmPassword}</span>}

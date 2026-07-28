@@ -1,11 +1,19 @@
+# --- Environment & Secrets ---
+.env
+Backend/.env
+
 # --- Backend (Django) ---
 Backend/venv/
 Backend/__pycache__/
+__pycache__/
 *.pyc
-Backend/db.sqlite3
-.env
+*.sqlite3
 
 # --- Frontend (React) ---
 Frontend/node_modules/
 Frontend/dist/
 Frontend/.env.local
+
+# --- OS artifacts ---
+.DS_Store
+Thumbs.db

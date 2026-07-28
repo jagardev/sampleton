@@ -81,7 +81,7 @@ export const PlaylistPage = () => {
                     } catch (_) {}
                 }
             } catch (error) {
-                console.error("Error al cargar la playlist", error);
+                console.error("Failed to load playlist", error);
             } finally {
                 setIsLoading(false);
             }
@@ -89,8 +89,8 @@ export const PlaylistPage = () => {
         if (id) fetchPlaylist();
     }, [id]);
 
-    if (isLoading) return <div className="p-8 font-bold">Cargando playlist...</div>;
-    if (!playlist) return <div className="p-8 font-bold text-red-500">No se encontró la playlist.</div>;
+    if (isLoading) return <div className="p-8 font-bold">Loading playlist...</div>;
+    if (!playlist) return <div className="p-8 font-bold text-red-500">Playlist not found.</div>;
 
     // Cross-reference the playlist's track ID list with the full track objects held in memory.
     const playlistTracks = playlist.tracks && Array.isArray(playlist.tracks)
@@ -99,7 +99,7 @@ export const PlaylistPage = () => {
 
     /** Removes a track from the playlist after user confirmation. */
     const handleRemoveTrack = async (trackIdToRemove: number) => {
-        if (!window.confirm("¿Estás seguro de que quieres quitar esta canción de la playlist?")) return;
+        if (!window.confirm("Are you sure you want to remove this track from the playlist?")) return;
         try {
             const token = localStorage.getItem('access');
             const newTracks = playlist.tracks.filter((tid: number) => tid !== trackIdToRemove);
@@ -110,8 +110,8 @@ export const PlaylistPage = () => {
             // Update the local playlist state to reflect the removal immediately.
             setPlaylist({ ...playlist, tracks: newTracks });
         } catch (error) {
-            console.error("Error quitando canción", error);
-            alert("No se pudo quitar la canción. Verifica que tienes permisos.");
+            console.error("Failed to remove track", error);
+            alert("Could not remove the track. Please verify your permissions.");
         }
     };
 
@@ -174,7 +174,7 @@ export const PlaylistPage = () => {
                 {/* Track rows */}
                 {playlistTracks.length === 0 ? (
                     <div className="py-8 text-center text-gray-500 dark:text-zinc-500 italic">
-                        Esta playlist está vacía.
+                        This playlist is empty.
                     </div>
                 ) : (
                     playlistTracks.map((track: any, index: number) => (

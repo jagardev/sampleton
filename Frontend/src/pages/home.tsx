@@ -48,7 +48,7 @@ export const Home = () => {
                 <h2 className="text-xl font-extrabold text-gray-800 dark:text-zinc-100">{title}</h2>
             </div>
             <div className="flex gap-4 overflow-x-auto pb-6 pt-2 px-2 -mx-2 custom-scrollbar">
-                {filteredTracks.length === 0 ? <p className="text-gray-500 italic">No hay canciones que coincidan con tu búsqueda...</p> : (
+                {filteredTracks.length === 0 ? <p className="text-gray-500 italic">No tracks match your search...</p> : (
                     filteredTracks.map((track) => (
                         <div
                             key={`grid-${track.id}`}
