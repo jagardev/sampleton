@@ -9,7 +9,6 @@
  * provides a play button and a shortcut to add the track to a playlist.
  */
 
-import React from 'react';
 import { useOutletContext, useNavigate } from 'react-router-dom';
 
 type ContextType = {

@@ -7,7 +7,7 @@
  * tracks, then exposes contextual actions such as playback, deletion, and
  * adding tracks to playlists.
  */
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useOutletContext, useNavigate } from 'react-router-dom';
 import api from '../api/axios';
 

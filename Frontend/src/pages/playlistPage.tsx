@@ -7,7 +7,7 @@
  * objects, and allows owners to edit cover art and remove tracks.
  */
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams, useOutletContext, useNavigate } from 'react-router-dom';
+import { useParams, useOutletContext } from 'react-router-dom';
 import api from '../api/axios';
 
 type ContextType = {
@@ -36,7 +36,6 @@ const TrackDuration = ({ audioUrl }: { audioUrl: string }) => {
 
 export const PlaylistPage = () => {
     const { id } = useParams(); // Reads the playlist ID from the URL (e.g. /playlist/1 -> id=1)
-    const navigate = useNavigate();
     const { tracks, handlePlayTrack, currentTrack, isPlaying } = useOutletContext<ContextType>();
 
     const [playlist, setPlaylist] = useState<any>(null);
