@@ -63,8 +63,10 @@ def create_user_profile(sender, instance, created, **kwargs):
         created (bool): True if this is a new record, False if it was updated.
         **kwargs: Additional keyword arguments passed by the signal dispatcher.
     """
+    if kwargs.get('raw', False):
+        return
     if created:
-        UserProfile.objects.create(user=instance)
+        UserProfile.objects.get_or_create(user=instance)
 
 
 class Track(models.Model):
