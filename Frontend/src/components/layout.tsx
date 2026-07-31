@@ -252,7 +252,7 @@ export const Layout = () => {
             
             <header className="flex flex-wrap md:flex-nowrap items-center justify-between p-4 gap-y-4 border-b border-gray-300 dark:border-zinc-800 sticky top-0 bg-zinc-50 dark:bg-zinc-900 z-10 shadow-sm transition-colors duration-300">
                 <div className="flex items-center gap-2 cursor-pointer group" onClick={() => navigate('/dashboard')}>
-                    <img src="/logo_icon.png" alt="Sampleton" width="48" height="48" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                    <img src="/logo_icon.png" alt="" width="48" height="48" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                     <span className="font-semibold text-2xl tracking-tighter">
                         <span className="text-black dark:text-white">Sample</span><span className="text-orange-500">ton</span>
                     </span>

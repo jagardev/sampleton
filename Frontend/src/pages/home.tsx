@@ -43,6 +43,7 @@ export const Home = () => {
      */
     const renderGrid = (title: string) => (
         <section>
+            <h1 className="sr-only">Sampleton Dashboard</h1>
             <div className="mb-4">
                 <h2 className="text-xl font-extrabold text-gray-800 dark:text-zinc-100">{title}</h2>
             </div>
@@ -62,8 +63,7 @@ export const Home = () => {
                                     openPlaylistModal(track);
                                 }}
                                 aria-label="Add to Playlist"
-                                className="absolute top-4 right-4 w-8 h-8 bg-white dark:bg-zinc-800 border-2 border-orange-500 text-orange-500 rounded-full flex items-center justify-center font-bold text-lg opacity-0 group-hover:opacity-100 hover:scale-110 hover:bg-orange-50 dark:hover:bg-zinc-700 transition-all z-20 shadow-md"
-                                title="Add to Playlist"
+                                className="absolute top-4 right-4 w-8 h-8 bg-white dark:bg-zinc-800 border-2 border-orange-700 dark:border-orange-500 text-orange-700 dark:text-orange-500 rounded-full flex items-center justify-center font-bold text-lg opacity-0 group-hover:opacity-100 hover:scale-110 hover:bg-orange-50 dark:hover:bg-zinc-700 transition-all z-20 shadow-md"
                             >
                                 +
                             </button>
@@ -99,8 +99,8 @@ export const Home = () => {
                             </div>
 
                             {/* Track title turns orange on hover to signal interactivity. */}
-                            <div className="font-bold text-sm truncate group-hover:text-orange-500 dark:text-zinc-200 dark:group-hover:text-orange-400 transition-colors" title={track.title}>{track.title}</div>
-                            <div className="text-xs text-gray-500 dark:text-zinc-400 truncate group-hover:text-gray-700 dark:group-hover:text-zinc-300 transition-colors">{track.artist} • <span className="uppercase">{track.genre}</span></div>
+                            <div className="font-bold text-sm truncate group-hover:text-orange-700 dark:text-zinc-200 dark:group-hover:text-orange-400 transition-colors" title={track.title}>{track.title}</div>
+                            <div className="text-xs text-gray-700 dark:text-zinc-300 truncate group-hover:text-gray-900 dark:group-hover:text-zinc-100 transition-colors">{track.artist} • <span className="uppercase">{track.genre}</span></div>
                         </div>
                     ))
                 )}
