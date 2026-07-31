@@ -252,7 +252,7 @@ export const Layout = () => {
             
             <header className="flex flex-wrap md:flex-nowrap items-center justify-between p-4 gap-y-4 border-b border-gray-300 dark:border-zinc-800 sticky top-0 bg-zinc-50 dark:bg-zinc-900 z-10 shadow-sm transition-colors duration-300">
                 <div className="flex items-center gap-2 cursor-pointer group" onClick={() => navigate('/dashboard')}>
-                    <img src="/logo_icon.png" alt="Sampleton" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                    <img src="/logo_icon.png" alt="Sampleton" width="48" height="48" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                     <span className="font-semibold text-2xl tracking-tighter">
                         <span className="text-black dark:text-white">Sample</span><span className="text-orange-500">ton</span>
                     </span>
@@ -262,11 +262,11 @@ export const Layout = () => {
                         <span className="absolute left-3 top-2.5 text-gray-400 group-focus-within:text-orange-500 transition-colors">
                             <svg fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>
                         </span>
-                        <input type="text" placeholder="Search for samples..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 dark:text-zinc-100 rounded-full py-1.5 pl-10 pr-4 text-sm focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 focus:ring-0 transition-colors duration-300 shadow-sm"/>
+                        <input type="text" aria-label="Search for samples" placeholder="Search for samples..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 dark:text-zinc-100 rounded-full py-1.5 pl-10 pr-4 text-sm focus:outline-none focus:border-orange-500 dark:focus:border-orange-500 focus:ring-0 transition-colors duration-300 shadow-sm"/>
                     </div>
                 </div>
                 <div className="flex flex-wrap items-center justify-end gap-2 md:gap-3 text-xs md:text-sm font-bold ml-auto md:ml-0">
-                    <button onClick={toggleDarkMode} className="w-8 h-8 md:w-9 md:h-9 md:mr-2 flex items-center justify-center rounded-full bg-zinc-700 dark:bg-zinc-800 border-2 border-transparent hover:border-gray-300 dark:hover:border-zinc-600 text-white dark:text-zinc-300 hover:text-orange-500 dark:hover:text-orange-500 transition-colors shadow-sm text-sm shrink-0">
+                    <button onClick={toggleDarkMode} aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'} className="w-8 h-8 md:w-9 md:h-9 md:mr-2 flex items-center justify-center rounded-full bg-zinc-700 dark:bg-zinc-800 border-2 border-transparent hover:border-gray-300 dark:hover:border-zinc-600 text-white dark:text-zinc-300 hover:text-orange-500 dark:hover:text-orange-500 transition-colors shadow-sm text-sm shrink-0">
                         {isDarkMode ? '☀️' : '🌙'}
                     </button>
                     <button onClick={() => navigate('/dashboard')} className="text-gray-600 dark:text-zinc-300 hover:text-orange-500 dark:hover:text-orange-400 px-2 py-1.5 md:px-3 rounded-full hover:bg-orange-50 dark:hover:bg-zinc-800 transition-colors whitespace-nowrap">Discover</button>
@@ -275,8 +275,8 @@ export const Layout = () => {
                     
                     {isAuthenticated ? (
                         <div className="relative" ref={menuRef}>
-                            <button onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)} className={`w-9 h-9 rounded-full border-2 border-transparent hover:border-orange-500 flex items-center justify-center transition-all focus:outline-none overflow-hidden shadow-sm ${isProfileMenuOpen ? 'ring-2 ring-orange-500 ring-offset-2' : ''}`}>
-                                {avatarUrl ? <img src={avatarUrl} alt="Avatar" className="w-full h-full object-cover" /> : <span className="text-gray-600">👤</span>}
+                            <button onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)} aria-label="User menu" aria-expanded={isProfileMenuOpen} className={`w-9 h-9 rounded-full border-2 border-transparent hover:border-orange-500 flex items-center justify-center transition-all focus:outline-none overflow-hidden shadow-sm ${isProfileMenuOpen ? 'ring-2 ring-orange-500 ring-offset-2' : ''}`}>
+                                {avatarUrl ? <img src={avatarUrl} alt="Avatar profile" width="36" height="36" className="w-full h-full object-cover" /> : <span className="text-gray-600" aria-hidden="true">👤</span>}
                             </button>
                             {isProfileMenuOpen && (
                                 <div className="absolute right-0 mt-3 w-48 bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 rounded-xl shadow-xl z-50 flex flex-col overflow-hidden">
@@ -286,7 +286,7 @@ export const Layout = () => {
                             )}
                         </div>
                     ) : (
-                        <button onClick={() => navigate('/login')} className="w-8 h-8 md:w-9 md:h-9 shrink-0 rounded-full border-2 border-orange-500 text-orange-500 flex items-center justify-center hover:bg-orange-50 transition-colors">👤</button>
+                        <button onClick={() => navigate('/login')} aria-label="Log in" className="w-8 h-8 md:w-9 md:h-9 shrink-0 rounded-full border-2 border-orange-500 text-orange-500 flex items-center justify-center hover:bg-orange-50 transition-colors">👤</button>
                     )}
                 </div>
             </header>
@@ -303,7 +303,7 @@ export const Layout = () => {
                     {currentTrack ? (
                         <>
                             <div className="w-12 h-12 bg-orange-100 rounded-full border-2 border-orange-200 overflow-hidden flex-shrink-0 shadow-sm">
-                                {currentTrack.cover_image ? <img src={currentTrack.cover_image} alt="cover" className="w-full h-full object-cover" /> : <span className="flex items-center justify-center w-full h-full text-lg">🎵</span>}
+                                {currentTrack.cover_image ? <img src={currentTrack.cover_image} alt={`${currentTrack.title} cover`} width="48" height="48" className="w-full h-full object-cover" /> : <span className="flex items-center justify-center w-full h-full text-lg" aria-hidden="true">🎵</span>}
                             </div>
                             <div className="flex-1 overflow-hidden">
                                 <div className="font-bold text-sm truncate text-gray-800 dark:text-gray-100">{currentTrack.title}</div>
@@ -319,23 +319,23 @@ export const Layout = () => {
                 </div>
                 <div className="flex-1 w-full flex flex-col items-center gap-1 md:gap-2">
                     <div className="flex items-center gap-6 text-xl">
-                        <button onClick={handlePrev} className={`w-6 h-6 hover:scale-125 transition-transform ${currentTrack ? 'text-gray-600 dark:text-zinc-300 hover:text-orange-500 dark:hover:text-orange-400' : 'text-gray-300 dark:text-zinc-600 cursor-not-allowed'}`}>
+                        <button onClick={handlePrev} aria-label="Previous track" className={`w-6 h-6 hover:scale-125 transition-transform ${currentTrack ? 'text-gray-600 dark:text-zinc-300 hover:text-orange-500 dark:hover:text-orange-400' : 'text-gray-300 dark:text-zinc-600 cursor-not-allowed'}`}>
                             <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full"><path d="M18.945 16.94C20.195 17.653 21.75 16.75 21.75 15.312V8.688c0-1.439-1.555-2.342-2.805-1.628L12 11.129V7.062c0-1.439-1.555-2.342-2.805-1.628L2.087 9.495c-1.26.72-1.26 2.536 0 3.256l7.108 4.061c1.25.714 2.805-.189 2.805-1.628v-4.067l6.945 4.18Z" /></svg>
                         </button>
-                        <button onClick={togglePlayPause} className={`w-12 h-12 rounded-full flex items-center justify-center hover:scale-110 shadow-md hover:shadow-lg transition-all text-white ${currentTrack ? 'bg-gradient-to-r from-orange-500 to-yellow-500 cursor-pointer' : 'bg-gray-300 dark:bg-zinc-600 cursor-not-allowed'}`}>
+                        <button onClick={togglePlayPause} aria-label={isPlaying ? 'Pause' : 'Play'} className={`w-12 h-12 rounded-full flex items-center justify-center hover:scale-110 shadow-md hover:shadow-lg transition-all text-white ${currentTrack ? 'bg-gradient-to-r from-orange-500 to-yellow-500 cursor-pointer' : 'bg-gray-300 dark:bg-zinc-600 cursor-not-allowed'}`}>
                             {isPlaying ? (
                                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6"><path fillRule="evenodd" d="M6.75 5.25a.75.75 0 0 1 .75-.75H9a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H7.5a.75.75 0 0 1-.75-.75V5.25Zm7.5 0A.75.75 0 0 1 15 4.5h1.5a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H15a.75.75 0 0 1-.75-.75V5.25Z" clipRule="evenodd" /></svg>
                             ) : (
                                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 ml-1"><path fillRule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clipRule="evenodd" /></svg>
                             )}
                         </button>
-                        <button onClick={handleNext} className={`w-6 h-6 hover:scale-125 transition-transform ${currentTrack ? 'text-gray-600 dark:text-zinc-300 hover:text-orange-500 dark:hover:text-orange-400' : 'text-gray-300 dark:text-zinc-600 cursor-not-allowed'}`}>
+                        <button onClick={handleNext} aria-label="Next track" className={`w-6 h-6 hover:scale-125 transition-transform ${currentTrack ? 'text-gray-600 dark:text-zinc-300 hover:text-orange-500 dark:hover:text-orange-400' : 'text-gray-300 dark:text-zinc-600 cursor-not-allowed'}`}>
                             <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full"><path d="M5.055 7.06C3.805 6.347 2.25 7.25 2.25 8.688v6.624c0 1.439 1.555 2.342 2.805 1.628L12 12.871v4.067c0 1.439 1.555 2.342 2.805 1.628l7.108-4.061c1.26-.72 1.26-2.536 0-3.256l-7.108-4.061C13.555 6.474 12 7.377 12 8.816v4.067L5.055 7.06Z" /></svg>
                         </button>
                     </div>
                     <div className="flex items-center gap-3 w-full max-w-[400px] text-xs text-gray-500 dark:text-zinc-400 font-medium">
                         <span className="w-8 text-right">{formatTime(currentTime)}</span>
-                        <div ref={progressBarRef} className="h-6 flex-1 relative cursor-pointer group flex items-center" onMouseDown={(e) => {
+                        <div ref={progressBarRef} role="slider" aria-label="Playback progress" aria-valuemin={0} aria-valuemax={duration || 100} aria-valuenow={currentTime} tabIndex={0} className="h-6 flex-1 relative cursor-pointer group flex items-center" onMouseDown={(e) => {
                                 setIsDraggingProgress(true);
                                 if (progressBarRef.current && duration) {
                                     const bounds = progressBarRef.current.getBoundingClientRect();
@@ -356,7 +356,7 @@ export const Layout = () => {
                 </div>
                 <div className="hidden md:flex w-1/4 justify-end items-center gap-2 text-sm text-gray-500">
                     <span>🔊</span>
-                    <div ref={volumeBarRef} className="w-24 h-6 relative cursor-pointer group flex items-center" onMouseDown={(e) => {
+                    <div ref={volumeBarRef} role="slider" aria-label="Volume" aria-valuemin={0} aria-valuemax={100} aria-valuenow={volume * 100} tabIndex={0} className="w-24 h-6 relative cursor-pointer group flex items-center" onMouseDown={(e) => {
                             setIsDraggingVolume(true);
                             if (volumeBarRef.current) {
                                 const bounds = volumeBarRef.current.getBoundingClientRect();
@@ -379,7 +379,7 @@ export const Layout = () => {
             {isPlaylistModalOpen && (
                 <div className="fixed inset-0 bg-black/60 z-[100] flex items-center justify-center p-4 backdrop-blur-sm">
                     <div className="bg-white dark:bg-zinc-900 p-6 border border-gray-200 dark:border-zinc-700 rounded-2xl shadow-2xl w-full max-w-md relative">
-                        <button onClick={() => setIsPlaylistModalOpen(false)} className="absolute top-4 right-4 text-xl font-bold text-gray-400 hover:text-gray-700 dark:hover:text-white transition-colors">✕</button>
+                        <button onClick={() => setIsPlaylistModalOpen(false)} aria-label="Close modal" className="absolute top-4 right-4 text-xl font-bold text-gray-400 hover:text-gray-700 dark:hover:text-white transition-colors">✕</button>
                         
                         <h2 className="text-2xl font-bold mb-6 text-orange-500">
                             {trackToAdd ? 'Add to Playlist' : 'Create Playlist'}
