@@ -6,3 +6,8 @@ Sampleton is a platform to discover, share and manage audio samples.
 - Upload audio samples
 - Play and organize samples into playlists
 - Interact with other users by liking and commenting on samples
+
+## Navigation
+- [Dashboard](/dashboard): Main discovery page.
+- [Library](/library): Your personal track and playlist collection.
+- [Upload](/upload): Upload new audio samples.
