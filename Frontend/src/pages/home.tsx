@@ -87,7 +87,7 @@ export const Home = () => {
                                             handlePlayTrack(track);
                                         }}
                                         aria-label={(currentTrack?.id === track.id && isPlaying) ? 'Pause' : 'Play'}
-                                        className="text-white border-2 border-white rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 w-14 h-14 flex items-center justify-center hover:scale-110 shadow-lg transition-all"
+                                        className="text-white bg-orange-600 border-2 border-white rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 w-14 h-14 flex items-center justify-center hover:scale-110 shadow-lg transition-all"
                                     >
                                         {(currentTrack?.id === track.id && isPlaying) ? (
                                             <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6"><path fillRule="evenodd" d="M6.75 5.25a.75.75 0 0 1 .75-.75H9a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H7.5a.75.75 0 0 1-.75-.75V5.25Zm7.5 0A.75.75 0 0 1 15 4.5h1.5a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H15a.75.75 0 0 1-.75-.75V5.25Z" clipRule="evenodd" /></svg>
@@ -99,7 +99,7 @@ export const Home = () => {
                             </div>
 
                             {/* Track title turns orange on hover to signal interactivity. */}
-                            <div className="font-bold text-sm truncate group-hover:text-orange-700 dark:text-zinc-200 dark:group-hover:text-orange-400 transition-colors" title={track.title}>{track.title}</div>
+                            <div className="font-bold text-sm truncate group-hover:text-orange-700 dark:text-zinc-200 dark:group-hover:text-orange-400 transition-colors">{track.title}</div>
                             <div className="text-xs text-gray-700 dark:text-zinc-300 truncate group-hover:text-gray-900 dark:group-hover:text-zinc-100 transition-colors">{track.artist} • <span className="uppercase">{track.genre}</span></div>
                         </div>
                     ))
