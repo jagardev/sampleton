@@ -41,16 +41,20 @@ export const Layout = () => {
      * Dark mode state. Defaults to dark and is persisted in local storage
      * so the user's preference survives page refreshes.
      */
-    const [isDarkMode, setIsDarkMode] = useState(true);
+    const [isDarkMode, setIsDarkMode] = useState(() => {
+        const theme = localStorage.getItem('theme');
+        return theme === 'dark' || !theme;
+    });
     useEffect(() => {
         const theme = localStorage.getItem('theme');
         if (theme === 'dark' || !theme) {
             document.documentElement.classList.add('dark');
-            setIsDarkMode(true);
         } else {
             document.documentElement.classList.remove('dark');
-            setIsDarkMode(false);
         }
+        // Remove the inline style added in index.html to prevent flash,
+        // letting Tailwind's classes take full control now that React is mounted.
+        document.documentElement.style.backgroundColor = '';
     }, []);
     const toggleDarkMode = () => {
         if (isDarkMode) {

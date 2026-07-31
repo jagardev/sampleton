@@ -5,6 +5,15 @@
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sampleton</title>
+    <script>
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark' || !theme) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.style.backgroundColor = '#18181b';
+      } else {
+        document.documentElement.style.backgroundColor = '#f4f4f5';
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
