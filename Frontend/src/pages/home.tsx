@@ -61,6 +61,7 @@ export const Home = () => {
                                     e.stopPropagation();
                                     openPlaylistModal(track);
                                 }}
+                                aria-label="Add to Playlist"
                                 className="absolute top-4 right-4 w-8 h-8 bg-white dark:bg-zinc-800 border-2 border-orange-500 text-orange-500 rounded-full flex items-center justify-center font-bold text-lg opacity-0 group-hover:opacity-100 hover:scale-110 hover:bg-orange-50 dark:hover:bg-zinc-700 transition-all z-20 shadow-md"
                                 title="Add to Playlist"
                             >
@@ -85,6 +86,7 @@ export const Home = () => {
                                             e.stopPropagation();
                                             handlePlayTrack(track);
                                         }}
+                                        aria-label={(currentTrack?.id === track.id && isPlaying) ? 'Pause' : 'Play'}
                                         className="text-white border-2 border-white rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 w-14 h-14 flex items-center justify-center hover:scale-110 shadow-lg transition-all"
                                     >
                                         {(currentTrack?.id === track.id && isPlaying) ? (
